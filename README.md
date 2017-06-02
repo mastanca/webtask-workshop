@@ -125,6 +125,7 @@ The CLI will let you do a number of things. Here are the most common commands:
 ### Using the CLI
 Now you'll do some basic things with the cli.
 
+#### List
 First list out your webtasks.
 
 ```bash
@@ -133,6 +134,8 @@ wt ls
 
 If you just created your account today, you should see 2 tasks listed, the one we created the in the browser `wt1` and the second one you created in the cli.
 
+
+#### Edit
 Let's edit the first one.
 
 ```bash
@@ -150,6 +153,8 @@ https://webtask.it.auth0.com/edit/wt-glenn-block-gmail-com-0#/...
 If the webtask editor does not automatically open, please copy this address and paste it into your browser.
 gbmac:workshop glennblock$
 ```
+
+#### Serve
 
 Next you'll create a task locally. Using your favorite editor, let's create a new task file `wt2.js`. Put the same task that you used earlier:
 
@@ -181,6 +186,7 @@ Open your browser to `localhost:8080`. You'll see your task has executed and you
 }
 ```
 
+#### Create
 You can now upload it to the cloud.
 
 ```bash
@@ -198,6 +204,7 @@ You can access your webtask at the following url:
 https://wt-glenn-block-gmail-com-0.run.webtask.io/wt2.js
 ```
 
+#### Logs
 Before invoking your task, you can start viewing realtime logs from the cli.
 
 ```bash
