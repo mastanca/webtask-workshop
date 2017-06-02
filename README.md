@@ -82,7 +82,16 @@ Now go modify the URL and add the name param i.e. `?name=Glenn` (using your name
 ## Using a Webtask as a Webhook
 That URL can now easily be plugged in as a Webhook. You can try that out using one of our favorite Webhook based services, Github.
 
-Open a new tab to Github and create a new repo, or choose an existing fork / personal repo that you can modify. Go the `settings` page on the repo and then click `Webhooks`
+First modify the code of your Webtask and add a `console.log` statement in the code. This will send output to the log viewer. The code shoud look like the following
+
+```javascript
+module.exports = function(ctx, cb) {
+  console.log("Webhook invoked");
+  cb(null, { hello: ctx.data.name || 'Anonymous' });
+};
+```
+
+Save the Webtask. Open a new tab to Github and create a new repo, or choose an existing fork / personal repo that you can modify. Go the `settings` page on the repo and then click `Webhooks`
 
 <a href="https://cloud.githubusercontent.com/assets/141124/26735390/ad0835a0-4776-11e7-8dcb-4ceb2e5d96be.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/141124/26735390/ad0835a0-4776-11e7-8dcb-4ceb2e5d96be.png" width="50%"/></a>
 
@@ -90,7 +99,11 @@ Now go click the `Add webhook` button to create a new Webhook. For the payload U
 
 <a href="https://cloud.githubusercontent.com/assets/141124/26736562/898a51ee-477b-11e7-8297-90294b025e8c.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/141124/26736562/898a51ee-477b-11e7-8297-90294b025e8c.png" width="50%"/><a>
 
+As soon as the Webhook is created, it will get invoked. Go check the log viewer for your Webtask and you should see the "Webhook invoked" message in the console.
+
+<img src="https://cloud.githubusercontent.com/assets/141124/26736848/97815bac-477c-11e7-9db7-a264db858d7e.png"/>
+
+You've just seen the basics of using the Webtask editor to create your first Webtask. You've then seen how to invoke the Webtask from the runner, in the browser, and then as a Github Webhook. Wasn't that easy? This is just scratching the surface.
 
 
-You've just seen the basics of using the Webtask editor and created your first Webtask. Wasn't that easy? This is just scratching the surface.
 
