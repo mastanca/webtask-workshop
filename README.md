@@ -111,3 +111,9 @@ In the first section you authored a Webtask via the browser. Webtask also offers
 ## Installing the CLI
 Head over to [https//webtask.io/cli](https://webtask.io/cli) and follow the instuctions to install and test the wt-cli. You will receive a code via email which you will need to enter into the CLI in order to activate it.
 
+### Using the CLI
+The CLI will let you do a number of things. Here are the most common commands:
+
+* Create - Creates a new webtask based on an existing file. The prefix for the file is used as the Webtask name by default. `wt create wt1.js`
+* Edit - Edits an existing Webtask in the Webtask editor. If no args are passed, then it will create a new Webtask in the editor. `wt edit wt1`
+
