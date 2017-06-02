@@ -197,3 +197,24 @@ You can access your webtask at the following url:
 
 https://wt-glenn-block-gmail-com-0.run.webtask.io/wt2.js
 ```
+
+Before invoking your task, you can start viewing realtime logs from the cli.
+
+```bash
+wt logs
+```
+
+This will output to show you that the stream is connected and waiting for output.
+
+```bash
+gbmac:workshop glennblock$ wt logs
+[20:42:49.638Z]  INFO wt: connected to streaming logs (container=wt-glenn-block-gmail-com-0)
+```
+
+Now go copy the task URL and open it in the browser. When you wdo you will see the realtime logs are displayed.
+
+```bash
+[20:45:04.443Z]  INFO wt: new webtask request 1496436304360.977826
+[20:45:04.483Z]  INFO wt: Webhook invoked
+[20:45:04.483Z]  INFO wt: finished webtask request 1496436304360.977826 with HTTP 200 in 44ms
+```
