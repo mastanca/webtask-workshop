@@ -55,7 +55,6 @@ Notice also the realtime log viewer that show each time the task is executed and
 
 <img src="https://cloud.githubusercontent.com/assets/141124/26715348/40428aa2-472a-11e7-84e5-0d1fbde9b282.png"/>
 
-You've just seen the basics of using the Webtask editor and created your first Webtask. This is just scratching the surface.
 
 ## Calling a Webtask from the browser
 Each Webtask you create is automatically an HTTP endpoint. There's no special configuration, as soon as you create it, it is available over HTTP.
@@ -64,7 +63,7 @@ Let's try this out. If you look in the editor, you'll see a url with a copy/past
 
 <img src="https://cloud.githubusercontent.com/assets/141124/26715476/bb686abc-472a-11e7-96d1-c0f9be65396a.png"/>
 
-Now open up the browser and paste that URL in your address bar and hit `return`. You'll see your Webtask return the anonymous result.
+Now open up a seperate browser tab and paste that URL in your address bar and hit `return`. You'll see your Webtask return the anonymous result.
 
 ```javascript
 {
@@ -79,3 +78,15 @@ Now go modify the URL and add the name param i.e. `?name=Glenn` (using your name
     hello: "Glenn"
 }
 ```
+
+## Using a Webtask as a Webhook
+That URL can now easily be plugged in as a Webhook. You can try that out using one of our favorite Webhook based services, Github.
+
+Head over to Github and create a new repo, or choose an existing fork / personal repo that you can modify. Go the `settings` page on the repo and then click `Webhooks`
+
+<a href="https://cloud.githubusercontent.com/assets/141124/26735390/ad0835a0-4776-11e7-8dcb-4ceb2e5d96be.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/141124/26735390/ad0835a0-4776-11e7-8dcb-4ceb2e5d96be.png"/></a>
+
+
+## Summary
+
+You've just seen the basics of using the Webtask editor and created your first Webtask. Wasn't that easy? This is just scratching the surface.
