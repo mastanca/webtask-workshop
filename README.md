@@ -88,11 +88,9 @@ Open a new tab to Github and create a new repo, or choose an existing fork / per
 
 Now go click the `Add webhook` button to create a new Webhook. For the payload URL, paste in the URL of your Webtask which you copied earlier (without any query params). Change the content-type to application/json. For events, put `Send me everything`. Leave all the other values to their defaults. Then click `Add webhook`.
 
-<a href="https://cloud.githubusercontent.com/assets/141124/26736562/898a51ee-477b-11e7-8297-90294b025e8c.png/" target="_blank"><img src="https://cloud.githubusercontent.com/assets/141124/26736562/898a51ee-477b-11e7-8297-90294b025e8c.png" width="50%"/><a>
+<a href="https://cloud.githubusercontent.com/assets/141124/26736562/898a51ee-477b-11e7-8297-90294b025e8c.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/141124/26736562/898a51ee-477b-11e7-8297-90294b025e8c.png" width="50%"/><a>
 
 
 
 You've just seen the basics of using the Webtask editor and created your first Webtask. Wasn't that easy? This is just scratching the surface.
-
-
 
