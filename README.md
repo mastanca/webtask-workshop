@@ -84,9 +84,7 @@ That URL can now easily be plugged in as a Webhook. You can try that out using o
 
 Head over to Github and create a new repo, or choose an existing fork / personal repo that you can modify. Go the `settings` page on the repo and then click `Webhooks`
 
-<a href="https://cloud.githubusercontent.com/assets/141124/26735390/ad0835a0-4776-11e7-8dcb-4ceb2e5d96be.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/141124/26735390/ad0835a0-4776-11e7-8dcb-4ceb2e5d96be.png"/></a>
-
-
-## Summary
+<a href="https://cloud.githubusercontent.com/assets/141124/26735390/ad0835a0-4776-11e7-8dcb-4ceb2e5d96be.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/141124/26735390/ad0835a0-4776-11e7-8dcb-4ceb2e5d96be.png" width="50%"/></a>
 
 You've just seen the basics of using the Webtask editor and created your first Webtask. Wasn't that easy? This is just scratching the surface.
+
