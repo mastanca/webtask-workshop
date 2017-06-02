@@ -262,5 +262,4 @@ module.exports = function(ctx, cb) {
 
 Now go back to your github repo and make a change either editing a file, adding an issue, etc. As soon as you do, you should see the Webhook is invoked and the Github payload will appear in the console window.
 
-<a href="https://cloud.githubusercontent.com/assets/141124/26745585/fd3aa7dc-479f-11e7-8405-c55c2d0454f8.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/141124/26745585/fd3aa7dc-479f-11e7-8405-c55c2d0454f8.png"/></a>
-
+<a href="https://cloud.githubusercontent.com/assets/141124/26745585/fd3aa7dc-479f-11e7-8405-c55c2d0454f8.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/141124/26745585/fd3aa7dc-479f-11e7-8405-c55c2d0454f8.png" width="50%"/></a>
