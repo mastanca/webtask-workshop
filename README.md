@@ -31,7 +31,7 @@ After you have logged in, you'll be taken to the Webtask `Create New` screen.
 
 <a href="https://webtask.io/images/docs/editor/wt-editor-create.png" target="_blank"><img src="https://webtask.io/images/docs/editor/wt-editor-create.png" width="50%"/></a>
 
-From here you can choose the type of Webtask to create. For now just choose "Webtask". You'll then be prompted for a name for your Webtask, after you enter it, click `Save`. Once you do you'll be taken right to the Webtask editor with a starter Webtask.
+From here you can choose the type of Webtask to create. For now just choose "Webtask". You'll then be prompted for a name for your Webtask, enter `wt1` and click `Save`. Once you do you'll be taken right to the Webtask editor with a starter Webtask.
 
 <a href="https://webtask.io/images/docs/editor/wt-editor-newtask.png" target="_blank"><img src="https://webtask.io/images/docs/editor/wt-editor-newtask.png" width="50%"/></a>
 
@@ -111,9 +111,89 @@ In the first section you authored a Webtask via the browser. Webtask also offers
 ## Installing the CLI
 Head over to [https//webtask.io/cli](https://webtask.io/cli) and follow the instuctions to install and test the wt-cli. You will receive a code via email which you will need to enter into the CLI in order to activate it.
 
-### Using the CLI
+### Common CLI commands
 The CLI will let you do a number of things. Here are the most common commands:
 
-* Create - Creates a new webtask based on an existing file. The prefix for the file is used as the Webtask name by default. `wt create wt1.js`
-* Edit - Edits an existing Webtask in the Webtask editor. If no args are passed, then it will create a new Webtask in the editor. `wt edit wt1`
+* ls - List Webtasks. `wt ls`
+* create - Creates a new webtask based on an existing file. The prefix for the file is used as the Webtask name by default. `wt create wt1.js`
+* edit - Edits an existing Webtask in the Webtask editor. If no args are passed, then it will create a new Webtask in the editor. `wt edit wt1`
+* mv - Renames a webtask. `wt mv wt1 wt2`
+* logs - View realtime logs `wt logs`
+* serve - Runs a webtask locally `wt serve wt1.js`
+* debug - Debugs a webtask locally.
 
+### Using the CLI
+Now you'll do some basic things with the cli.
+
+First list out your webtasks.
+
+```bash
+wt ls
+```
+
+If you just created your account today, you should see 2 tasks listed, the one we created the in the browser `wt1` and the second one you created in the cli.
+
+Let's edit the first one.
+
+```bash
+wt edit wt1
+```
+
+This should open up the editor to view your Webtask.
+
+```bash
+gbmac:workshop glennblock$ wt edit wt1
+Attempting to open the following url in your browser:
+
+https://webtask.it.auth0.com/edit/wt-glenn-block-gmail-com-0#/...
+
+If the webtask editor does not automatically open, please copy this address and paste it into your browser.
+gbmac:workshop glennblock$
+```
+
+Next you'll create a task locally. Using your favorite editor, let's create a new task file `wt2.js`. Put the same task that you used earlier:
+
+```javascript
+module.exports = function(ctx, cb) {
+  console.log("Webhook invoked");
+  cb(null, { hello: ctx.data.name || 'Anonymous' });
+};
+```
+
+You can test the task locally.
+
+```bash
+wt serve wt2.js
+```
+
+You'll see a message indicating your task is running.
+
+```bash
+gbmac:workshop glennblock$ wt serve wt2.js
+Your webtask is now listening for IPv4 traffic on 127.0.0.1:8080
+```
+
+Open your browser to `localhost:8080`. You'll see your task has executed and you got back the response
+
+```javascript
+{
+    hello: "Anonymous"
+}
+```
+
+You can now upload it to the cloud.
+
+```bash
+wt create wt2.js.
+```
+
+This will immediately create your task and share the URL.
+
+```bash
+gbmac:workshop glennblock$ wt create wt2.js
+Webtask created
+
+You can access your webtask at the following url:
+
+https://wt-glenn-block-gmail-com-0.run.webtask.io/wt2.js
+```
