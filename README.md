@@ -180,7 +180,7 @@ module.exports = function(ctx, cb) {
 };
 ```
 
-You can test the task locally.
+You can run the task locally.
 
 ```bash
 wt serve wt2.js
@@ -247,24 +247,57 @@ So far you've created Webtasks that write to the console, access query strings, 
 ## Accessing the payload
 The first Webtask you created `wt1` was wired up to a Github Webhook. When the Webhook fires the message `Webhook invoked` is outputted to the console from the Webtask. To really do anything useful, the Webtask needs to access the payload Github sends which gives details about the invocation. 
 
-Webtask exposes the body of request on the context object. In you code, you can use `ctx.body` to get the body. `body` will either be a JSON object if the payload is JSON and content-type is 'application/json' OR it will be the raw payload.
+You already saw how using `ctx.data` you were able to access querys string params. Webtask also lets you access the body of the request. In you code, you can use `ctx.body` to get the body. `body` will either be a JSON object if the payload is JSON and content-type is 'application/json' OR it will be the raw payload.
 
 Go and edit your first task using the cli. `wt edit wt1.js`. Modify the code so it outputs the body to the console, instead of a static message. To do this you're going to use the built in `util` node module. Webtask also supports 3rd party modules which we'll discuss later. You'll use the `util` module to output the JSON object that Github sends.
 
 ```javascript
-
 var util = require('util');
 module.exports = function(ctx, cb) {
-  console.log(util.inspect(ctx.body));
-  cb(null, { hello: ctx.data.name || 'Anonymous' });
+  console.log(util.inspect(ctx.body, {depth:null}));
+  cb();
 };
 ```
 
 Now go back to your github repo and make a change either editing a file, adding an issue, etc. As soon as you do, you should see the Webhook is invoked and the Github payload will appear in the console window.
 
-<a href="https://cloud.githubusercontent.com/assets/141124/26745585/fd3aa7dc-479f-11e7-8405-c55c2d0454f8.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/141124/26745585/fd3aa7dc-479f-11e7-8405-c55c2d0454f8.png" width="50%"/></a>
+<a href="https://cloud.githubusercontent.com/assets/141124/26745585/fd3aa7dc-479f-11e7-8405-c55c2d0454f8.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/141124/26745585/fd3aa7dc-479f-11e7-8405-c55c2d0454f8.png" width="70%"/></a>
+
+## Secrets
+A very common use case for Webtask is to be a bridge between another service. For example you might want to send a notification to a Slack channel whenever an issue is filed in a Github repo. Using Webtask provides a real easy way to handle this kind of logic. 
+
+In order to send to Slack though, you will need to provide an SLACK URL. This URL is a secret, similar to an API key that would use to talk to a service like Twilio, or it may be connection string information to connect to a Database. Generally you don't want this kind of information sitting in the code. For one thing it is a security risk to have keys loosely exposed in text. Another is it makes the code hard to reuse and test.
+
+Webtask lets you store this kind of information seperately from the code in a secure manner using `Secrets`. Each Webtask can have one or more secrets with are then accessible off of the `secrets` param of the context object. Secrets are useful for more than just secure keys and connection strings, you can use them for general configuration as well.
+
+You'll now see how you can use secrets to connecting your Webtask to Slack. Before you move forward the first thing you need is an incoming Slack URL. If one is not provided to you, you can create one in any Slack group that you are an admin. Once you have the URL, copy it to the clipboard.
+
+<img src="secrets"/>
+
+Now you'll go add a Secret. In the editor (editing wt1) you can create Secrets using the Secrets panel. Click on the `Key` icon and then select `Secrets`. The Secrets panel will be displayed. Add a new secret called `SLACK_URL` and then place the URL you copied to the clipbard as the value. Click `Save` to save your secret.
+
+As mentioned earlier, secrets can be accessed of the Context object using the name. To access the `SLACK_URL` you can use the code `ctx.secrets.SLACK_URL`.
+
+To put everything together you now need to add logic to your task to send to Slack whenever there is an issue. For the actual sending to Slack you're going to take advantage of a 3rd party node module, `slack-notify`. Webtask has over 1000 modules available out of the box without any configuration, which you can just `require`. `slack-notify` is one such modules. We'll cover much more about Module later including how you can access ANY npm module.
+
+Below is the updated code to send to Slack.
 
 
+```javascript
+module.exports = function(ctx, cb) {
+  var slack = require("slack-notify")(ctx.secrets.SLACK_URL);
+  var body = ctx.body;
+  if (body.issue && body.action === "opened") {
+    var issue = body.issue;
 
+    var text=`Repository: ${body.repository.full_name}\n` +
+             `Id: ${issue.id}\n` +
+             `Url: ${issue.url}` +
+             `Title: ${issue.title}\n\n` +
+             `${issue.body}`;
 
-
+    slack.send({channel:"#github", title:"New issue"}); //put your channel here.
+  }
+  cb();
+};
+```
