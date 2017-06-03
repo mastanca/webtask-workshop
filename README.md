@@ -303,3 +303,12 @@ module.exports = function(ctx, cb) {
   cb();
 };
 ```
+
+Here is what this code is doing:
+
+* Requiring the `slack-notify` module and passing the `SLACK_URL` to the constructor.
+* Checking if the notification is for a new issue that has been opened.
+* If it is a new issue, creating a tailored Slack Message to send to the channel.
+* Sending the message.
+
+
