@@ -269,9 +269,9 @@ A very common use case for Webtask is to be a bridge between another service. Fo
 
 In order to send to Slack though, you will need to provide an SLACK URL. This URL is a secret, similar to an API key that would use to talk to a service like Twilio, or it may be connection string information to connect to a Database. Generally you don't want this kind of information sitting in the code. For one thing it is a security risk to have keys loosely exposed in text. Another is it makes the code hard to reuse and test.
 
-Webtask lets you store this kind of information seperately from the code in a secure manner using `Secrets`. Each Webtask can have one or more secrets with are then accessible off of the `secrets` param of the context object. Secrets are useful for more than just secure keys and connection strings, you can use them for general configuration as well.
+Webtask lets you store this kind of information separately from the code in a secure manner using `Secrets`. Each Webtask can have one or more secrets with are then accessible off of the `secrets` param of the context object. Secrets are useful for more than just secure keys and connection strings, you can use them for general configuration as well.
 
-You'll now see how you can use secrets to connecting your Webtask to Slack. Before you move forward the first thing you need is an incoming Slack URL. If one is not provided to you, you can create one in any Slack group that you are an admin. Once you have the URL, copy it to the clipboard.
+You'll now see how you can use secrets to connecting your Webtask to Slack. Before you move forward the first thing you need is an incoming Slack URL. If one is not provided to you, you can create one in any Slack group that you are an admin following these [instructions](https://my.slack.com/services/new/incoming-webhook/]. Once you have the URL, copy it to the clipboard.
 
 <img src="secrets"/>
 
@@ -293,7 +293,7 @@ module.exports = function(ctx, cb) {
 
     var text='*New Issue*\n\n' + 
              `Repository: ${body.repository.full_name}\n` +
-             `Id: ${issue.id}\n` +
+             `Number: ${issue.number}\n` +
              `Url: ${issue.url}\n` +
              `Title: ${issue.title}\n\n` +
              `${issue.body}`;
@@ -311,4 +311,6 @@ Here is what this code is doing:
 * If it is a new issue, creating a tailored Slack Message to send to the channel.
 * Sending the message.
 
+Now go create an issue in your repo. As soon as you do, you should see a Slack message similar to the following.
 
+<img src="https://cloud.githubusercontent.com/assets/141124/26757499/fc58ed9c-4871-11e7-8261-ef83e2809c90.png" width="50%"/>
