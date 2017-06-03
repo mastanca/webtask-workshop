@@ -63,7 +63,7 @@ Let's try this out. If you look in the editor, you'll see a url with a copy/past
 
 <img src="https://cloud.githubusercontent.com/assets/141124/26715476/bb686abc-472a-11e7-96d1-c0f9be65396a.png"/>
 
-Now open up a seperate browser tab and paste that URL in your address bar and hit `return`. You'll see your Webtask return the anonymous result.
+Now open up a separate browser tab and paste that URL in your address bar and hit `return`. You'll see your Webtask return the anonymous result.
 
 ```javascript
 {
@@ -133,10 +133,11 @@ The CLI will let you do a number of things. Here are the most common commands:
 * ls - List Webtasks. `wt ls`
 * create - Creates a new webtask based on an existing file. The prefix for the file is used as the Webtask name by default. `wt create wt1.js`
 * edit - Edits an existing Webtask in the Webtask editor. If no args are passed, then it will create a new Webtask in the editor. `wt edit wt1`
-* mv - Renames a webtask. `wt mv wt1 wt2`
+* mv - Renames a Webtask. `wt mv wt1 wt2`
 * logs - View realtime logs `wt logs`
-* serve - Runs a webtask locally `wt serve wt1.js`
-* debug - Debugs a webtask locally.
+* serve - Runs a Webtask locally `wt serve wt1.js`
+* debug - Debugs a Webtask locally.
+* profile - Manage Webtask profiles
 
 ### Using the CLI
 Now you'll do some basic things with the cli.
