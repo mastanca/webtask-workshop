@@ -560,4 +560,4 @@ wt debug -d=devtool --parse-body wt1.js --secrets-file secrets --storage-file st
 
 Devtool will popup. Once it opens, you can drill down into the file explorer on the left to find your task. Then double click on it and you can add a breakpoint as is shown below.
 
-<img src="https://cloud.githubusercontent.com/assets/141124/26760129/f7145520-48c5-11e7-8e19-0928df592264.gif"/>
+<img src="https://cloud.githubusercontent.com/assets/141124/26760129/f7145520-48c5-11e7-8e19-0928df592264.gif" width="50%"/>
