@@ -317,7 +317,7 @@ Now go create an issue in your repo. As soon as you do, you should see a Slack m
 
 As you can see `Secrets` are really easy to use, and they keep your code more secure and easier to maintain. 
 
-# Storage
+## Storage
 Sometimes Webtasks need to persist state. Webtask includes a built in [storage API](https://webtask.io/docs/storage) that you can use within your tasks. You can persist and retreive a single JSON object in the store that is <= 500KB in size. Storage also supports concurrency, to prevent loss of data. It's use is primarly to maintain lightweight and transient state. To access storage you use the `storage` object on the `context`. 
 
 For the slack example, you can imagine using storage to keep a counter of issues created for each repo. This is a good fit as the number of repos should be relatively small.
@@ -393,6 +393,38 @@ Now to what the new code does:
  * If no data was stored, then data will be initialized as an empty JSON object.
  * On the data object, the value for the repo name key will be incremented by 1. If it was previously undefined, then it will be initialized to 1.
  * The data object will be persisted using the `set` function on Storage.
- * If there is a conflict (meaning another instance of the task updated storage AFTER this instance read the data), then it will resolve the conflict by choosing the greatest number between the current value and the conflicting value. It will then add 1 and try again.
- * After 3 total attempts it will return an error.
+ * If there is a 409 conflict (meaning another instance of the task updated storage AFTER this instance read the data), then it will resolve the conflict by choosing the greatest number between the current value and the conflicting value. It will then add 1 and try again.
+ * After 3 total attempts to resolve it will return an error.
+
+## HTTP fidelity and accessing the raw request and response
+The callback object on Webtask allows you to return a body, whether it be a string or a JSON payload. This is useful for many scenarios, but sometimes you want to go further. You may need to access or set headers such as content-type or cache headers, or check for an API key. Each Webtask is an HTTP endpoint, and you can access the raw Node.js request and response objects. This will be especially useful for alternate programmng models, which we'll learn about later.
+
+To do this, you use a different function signature for your task. 
+
+```javascript
+module.exports = function(context, req, res) {
+  
+}
+```
+
+* `req` and `res` are the raw Node.js request and response objects.
+* `context.body` will not be populated by default. This is useful for advanced cases like chunked data. It is possible to force body to be populated.
+
+Now you have access to the raw request. Let's see how you can return a simple HTML page.
+
+Create a new webtask: `wt edit`. Once the editor opens, this time select `Pick a Template`. In the search bar type `Full` and select `Full HTTP control`. Type `wt3` for the name and click `Enter`.
+
+This will create a task like the following:
+
+```javascript
+module.exports = function (context, req, res) {
+  res.writeHead(200, { 'Content-Type': 'text/html '});
+  res.end('<h1>Hello, world!</h1>');
+};
+```
+
+* This task sets the Content-Type header to `text/html`.
+* Returns a simple HTML response.
+
+Notice there is no cb object. As you have access to the raw response, you can call res.end, to end the response.
 
