@@ -426,5 +426,5 @@ module.exports = function (context, req, res) {
 * This task sets the Content-Type header to `text/html`.
 * Returns a simple HTML response.
 
-Notice there is no cb object. As you have access to the raw response, you can call res.end, to end the response.
+Notice there is no cb object. As you have access to the raw response, you can call res.end, to end the response. Using the raw request and response opens up a number of possiblities, you can write micro-apis, and you can return other kinds of rich content like a PDF or a graphic. You can even build `Express` tasks, which you'll cover later.
 
