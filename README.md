@@ -271,11 +271,11 @@ In order to send to Slack though, you will need to provide an SLACK URL. This UR
 
 Webtask lets you store this kind of information separately from the code in a secure manner using [Secrets](https://webtask.io/docs/editor/secrets). Each Webtask can have one or more secrets with are then accessible off of the `secrets` param of the context object. Secrets are useful for more than just secure keys and connection strings, you can use them for general configuration as well.
 
-<img src="https://cloud.githubusercontent.com/assets/141124/26766088/f657c31e-493e-11e7-9958-87bdfc517c30.png" width="25%"/>
-
 You'll now see how you can use secrets to connecting your Webtask to Slack. Before you move forward the first thing you need is an incoming Slack URL. If one is not provided to you, you can create one in any Slack group that you are an admin following these [instructions](https://my.slack.com/services/new/incoming-webhook/). Once you have the URL, copy it to the clipboard.
 
-Now you'll go add a Secret. In the editor (editing wt1) you can create Secrets using the Secrets panel. Click on the `Key` icon and then select `Secrets`. The Secrets panel will be displayed. Add a new secret called `SLACK_URL` and then place the URL you copied to the clipbard as the value. Click `Save` to save your secret.
+Now you'll go add a Secret. In the editor (editing wt1) you can create Secrets using the Secrets panel. Click on the `Key` icon and then select `Secrets`. The Secrets panel will be displayed. Add a new secret called `SLACK_URL` and then place the URL you copied to the clipboard as the value. Click `Save` to save your secret.
+
+<img src="https://cloud.githubusercontent.com/assets/141124/26766088/f657c31e-493e-11e7-9958-87bdfc517c30.png" width="25%"/>
 
 As mentioned earlier, secrets can be accessed of the Context object using the name. To access the `SLACK_URL` you can use the code `ctx.secrets.SLACK_URL`.
 
