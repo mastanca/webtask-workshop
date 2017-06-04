@@ -432,5 +432,59 @@ Save the task and copy the Webtask URL to the clipboard as you did earlier. Now 
 
 <img src="https://cloud.githubusercontent.com/assets/141124/26758169/2c6ba84e-488b-11e7-9c21-8f99b6a3e884.png" width="50%"/>
 
+As you can see, you now have a Webtask that returns an HTML page.
+
 Using the raw request and response opens up a number of possiblities, you can write micro-apis, and you can return other kinds of rich content like a PDF or a graphic. You can even build `Express` tasks, something which you'll see later.
 
+# Modules
+When you need to go beyond the built in node.js functionality, Webtask has an answer, npm modules. It offers two ways to get access to node nodules so you can enrich the capabilities of your Webtasks.
+
+## Using pre-installed modules
+Webtask includes 1000+ modules for you to easily just use in you Webtask. To check if a module is pre-installed, you can search [here](https://tehsis.github.io/webtaskio-canirequire). In the earlier exercise we used the `slack-notify` module to send a notification to Slack. You can see that module is installed [here](https://tehsis.github.io/webtaskio-canirequire/#slack-notify). 
+
+Accessing a pre-installed is really simple, you just require it. i.e. if you want to access `twilio` you just do `require('twilio')` and so on.
+
+### Multiple versions
+Some built-in modules have multiple versions. For example the `react` module has 2 [versions](https://tehsis.github.io/webtaskio-canirequire/#react). In the case of multiple versions, you can specify the version in the `require` statement i.e. `require('react@15.4.1')` will pull in that specific version.
+
+## Including modules that are not pre-installed
+Up until recently you were generally limited to set of pre-installed modules. We've now added support for any NPM module in the NPM registry. 
+
+To include modules from the registry, you use a `package.json`, the idiomatic way of including modules in Node.js. When you create a task that has a package.json adjacent to it in the file-system, `wt-cli` will automatically ensure those modules are installed. Webtask keeps several caches of a module and all its dependencies, thus after the initial install all subsequent installs will be dramatically faster.
+
+From a `require` standpoint, you do not specify any version when you require, if the module was specific via package.json.
+
+Try this out yourself. Create a new task (wt4.js) locally. Then create a package.json using `npm init` and specifying the task name (wt4) for the name. Modify the package.json and include a module / version in the dependencies that is not pre-installed. You can verify using the [canirequire](https://tehsis.github.io/webtaskio-canirequire) tool mentioned earlier. Save your package.json. It should like something like the following:
+
+```javascript
+{
+  "name": "wt4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "wt4.js",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.1"
+  }
+}
+```
+
+Now create the task using `wt create wt4.js`. You should see output similar to the following indicating the module is being installed.
+
+```bash
+gbmac:workshop glennblock$ wt create wt4.js
+* Hint: A package.json file has been detected adjacent to your webtask. Ensuring that all dependencies from that file are avialable on the platform. This may take a few minutes for new versions of modules so please be patient.
+* Hint: If you would like to opt-out from this behaviour, pass in the --ignore-package-json flag.
+Resolving 1 module...
+Provisioning 1 module...
+cheerio@1.0.0-rc.1 is available
+Webtask created
+
+You can access your webtask at the following url:
+
+https://wt-glenn-block-gmail-com-0.run.webtask.io/wt4
+```
+
+If the module installation fails, then an error will be reported.
+
+## Handling of ranges and freezing dependencies
+If you are famliar with `package.json`, then you know it supports ranges for dependencies. Webtask will honor these ranges, but it will freeze the dependencies at the time of install. Thus subsequent updates to the task will not cause new versions of the modules to be installed. If however you modify the package.json, then new versions will get installed.
