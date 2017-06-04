@@ -374,7 +374,7 @@ module.exports = function(ctx, cb) {
         return cb(error);
       }
     }
-    cb(null, data);
+    cb();
   }
   
   function getStats() {
@@ -488,3 +488,58 @@ If the module installation fails, then an error will be reported.
 
 ## Handling of ranges and freezing dependencies
 If you are famliar with `package.json`, then you know it supports ranges for dependencies. Webtask will honor these ranges, but it will freeze the dependencies at the time of install. Thus subsequent updates to the task will not cause new versions of the modules to be installed. If however you modify the package.json, then new versions will get installed.
+
+# Local Execution and debugging
+## Serving 
+Earlier when you created your second task `wt2`, you saw how you were able to run the task locally using `wt serve`. That example was very simple, but it did not rely on 3rd party modules, secrets, or on accessing the storage APIs. In addition to running a task locally, you can also specify secrets and storage using JSON files. You'll see how in this section.
+
+First do the following steps.
+
+* Open up `wt1` in the editor: `wt edit wt1`. 
+* Copy the contents of the task to a local wt1.js. 
+* Install locally the slack-notify module: `npm install slack-notify`. 
+
+### Secrets & Storage
+To set secrets, you can provide a secrets file where each secret is a key/value pair. For storage you can provide a text file which will act as the store. You can also pre-populate the text file if you want to provide test data in the store.
+
+First create a new text file called `secrets`. Add the contents below substituting {slack_url} with the SLACK URL you used in the task.
+
+```text
+SLACK_URL={slack_url}
+```
+
+Now create an empty text file for storage: 
+
+```text
+touch storage
+```
+
+### Executing with Secrets & Storage
+To serve, you'll additionally specify the secrets and storage file at the command line. Also you'll need to pass --parse-body to force the body to be parsed.
+
+```text
+wt serve --parse-body wt1.js --secrets-file secrets --storage-file storage
+```
+
+Now that the server is running, you can send a request. Becuase this task requires a POST with a body, you can use `curl`
+
+Open a second terminal window and paste the `curl` command below directly.
+
+```bash
+curl localhost:8080 -H "content-type: application/json" -d '{ 
+    "action":"opened", 
+    "repository":{ 
+        "full_name": "testrepo" 
+    }, 
+    "issue":{ 
+        "number":1, 
+        "url":"testurl", 
+        "title":"test issue 1", 
+        "body":"test body" 
+    } 
+}'
+```
+
+Check the first terminal, you should see the message `issue created`. Also if you check your slack channel, you see the dummy issue was in fact created.
+
+<img src="https://cloud.githubusercontent.com/assets/141124/26760014/1b8f655a-48c3-11e7-9976-3bf5dd985796.png" width="50%"/>
