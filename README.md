@@ -426,5 +426,10 @@ module.exports = function (context, req, res) {
 * This task sets the Content-Type header to `text/html`.
 * Returns a simple HTML response.
 
-Notice there is no cb object. As you have access to the raw response, you can call res.end, to end the response. Using the raw request and response opens up a number of possiblities, you can write micro-apis, and you can return other kinds of rich content like a PDF or a graphic. You can even build `Express` tasks, which you'll cover later.
+*Note:*Notice there is no callback object. As you have access to the raw response, you can call res.end, to end the response. 
 
+Save the task and copy the Webtask URL to the clipboard as you did earlier. Now paste that into your browser.
+
+<img src="https://cloud.githubusercontent.com/assets/141124/26758169/2c6ba84e-488b-11e7-9c21-8f99b6a3e884.png"/>
+
+Using the raw request and response opens up a number of possiblities, you can write micro-apis, and you can return other kinds of rich content like a PDF or a graphic. You can even build `Express` tasks, which you'll cover later.
