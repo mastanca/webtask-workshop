@@ -585,3 +585,31 @@ You'll see that the debugger will break on the breakpoint you set previously. Yo
 
 <a href="https://cloud.githubusercontent.com/assets/141124/26760204/70ca74b6-48c7-11e7-8684-92a389cd6794.gif" target="_blank"><img src="https://cloud.githubusercontent.com/assets/141124/26760204/70ca74b6-48c7-11e7-8684-92a389cd6794.gif" width="50%"/></a>
 
+Go stop the task from being served and Devtool will automatically close. Now let's see how you can debug using Visual Studio Code.
+
+### VS Code
+If you run `wt debug` without specifying `-d`, then `wt-cli` will launch standard node debugging allowing you to attach with an IDE like VS Code or Webstorm. 
+
+Here's the steps to debug with VS Code.
+
+First serve the task using wt-cli without specifying `-d`
+
+```
+wt debug --parse-body wt1.js --secrets-file secrets --storage-file storage
+```
+
+Once the task is running do the following steps.
+
+* Open VS Code 
+* Open the folder where your task lives within VS Code.
+* Open wt1.js and add a breakpoint.
+* Press the `Debug` button.
+* Select `Add Configuration` via the Drop Down. 
+* Select `Node.js: Attach`.
+* Save the Launch.json 
+* In the Dropdown select "Attach"
+* Press the `Play` button.
+
+Repeat the previous curl from the terminal. You will see your breakpoint is hit and you can debug!
+
+<a href="https://cloud.githubusercontent.com/assets/141124/26760389/94c0d3ac-48cb-11e7-9a03-4e89241e2be1.gif" target="_blank"><img src="https://cloud.githubusercontent.com/assets/141124/26760389/94c0d3ac-48cb-11e7-9a03-4e89241e2be1.gif" width="50%"/></a>
