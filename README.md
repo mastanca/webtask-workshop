@@ -145,7 +145,7 @@ Now you'll do some basic things with the cli.
 #### List
 First list out your webtasks.
 
-```bash
+```
 wt ls
 ```
 
@@ -155,13 +155,13 @@ If you just created your account today, you should see 2 tasks listed, the one w
 #### Edit
 Let's edit the first one.
 
-```bash
+```
 wt edit wt1
 ```
 
 This should open up the editor to view your Webtask.
 
-```bash
+```
 gbmac:workshop glennblock$ wt edit wt1
 Attempting to open the following url in your browser:
 
@@ -183,13 +183,13 @@ module.exports = function(ctx, cb) {
 
 You can run the task locally.
 
-```bash
+```
 wt serve wt2.js
 ```
 
 You'll see a message indicating your task is running.
 
-```bash
+```
 gbmac:workshop glennblock$ wt serve wt2.js
 Your webtask is now listening for IPv4 traffic on 127.0.0.1:8080
 ```
@@ -205,13 +205,13 @@ Open your browser to `localhost:8080`. You'll see your task has executed and you
 #### Create
 You can now upload it to the cloud.
 
-```bash
+```
 wt create wt2.js.
 ```
 
 This will immediately create your task and share the URL.
 
-```bash
+```
 gbmac:workshop glennblock$ wt create wt2.js
 Webtask created
 
@@ -223,20 +223,20 @@ https://wt-glenn-block-gmail-com-0.run.webtask.io/wt2.js
 #### Logs
 Before invoking your task, you can start viewing realtime logs from the cli.
 
-```bash
+```
 wt logs
 ```
 
 This will output to show you that the stream is connected and waiting for output.
 
-```bash
+```
 gbmac:workshop glennblock$ wt logs
 [20:42:49.638Z]  INFO wt: connected to streaming logs (container=wt-glenn-block-gmail-com-0)
 ```
 
 Now go copy the task URL and open it in the browser. When you do you will see the realtime logs are displayed.
 
-```bash
+```
 [20:45:04.443Z]  INFO wt: new webtask request 1496436304360.977826
 [20:45:04.483Z]  INFO wt: Webhook invoked
 [20:45:04.483Z]  INFO wt: finished webtask request 1496436304360.977826 with HTTP 200 in 44ms
@@ -470,7 +470,7 @@ Try this out yourself. Create a new task (wt4.js) locally. Then create a package
 
 Now create the task using `wt create wt4.js`. You should see output similar to the following indicating the module is being installed.
 
-```bash
+```
 gbmac:workshop glennblock$ wt create wt4.js
 * Hint: A package.json file has been detected adjacent to your webtask. Ensuring that all dependencies from that file are avialable on the platform. This may take a few minutes for new versions of modules so please be patient.
 * Hint: If you would like to opt-out from this behaviour, pass in the --ignore-package-json flag.
@@ -525,7 +525,7 @@ Now that the server is running, you can send a request. Becuase this task requir
 
 Open a second terminal window and paste the `curl` command below directly.
 
-```bash
+```
 curl localhost:8080 -H "content-type: application/json" -d '{ 
     "action":"opened", 
     "repository":{ 
@@ -554,7 +554,7 @@ There's a convenient stand alone Electron-based debugger called Devtool, which y
 
 Once devtool is installed you can launch `wt-cli` telling it to use it to debug. Here is the command to debug our task.
 
-```bash
+```
 wt debug -d=devtool --parse-body wt1.js --secrets-file secrets --storage-file storage
 ```
 
