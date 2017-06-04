@@ -561,3 +561,27 @@ wt debug -d=devtool --parse-body wt1.js --secrets-file secrets --storage-file st
 Devtool will popup. Once it opens, you can drill down into the file explorer on the left to find your task. Then double click on it and you can add a breakpoint as is shown below.
 
 <a href="https://cloud.githubusercontent.com/assets/141124/26760129/f7145520-48c5-11e7-8e19-0928df592264.gif" target="_blank"><img src="https://cloud.githubusercontent.com/assets/141124/26760129/f7145520-48c5-11e7-8e19-0928df592264.gif" width="50%"/></a>
+
+Now that your breakpoint is set, you can test it out.
+
+Run the previous `curl` command that you ran before:
+
+```bash
+curl localhost:8080 -H "content-type: application/json" -d '{ 
+    "action":"opened", 
+    "repository":{ 
+        "full_name": "testrepo" 
+    }, 
+    "issue":{ 
+        "number":1, 
+        "url":"testurl", 
+        "title":"test issue 1", 
+        "body":"test body" 
+    } 
+}'
+```
+
+You'll see that the debugger will break on the breakpoint you set previously. You can then step through debug, inspect variables and everything!
+
+<a href="https://cloud.githubusercontent.com/assets/141124/26760204/70ca74b6-48c7-11e7-8684-92a389cd6794.gif" target="_blank"><img src="https://cloud.githubusercontent.com/assets/141124/26760204/70ca74b6-48c7-11e7-8684-92a389cd6794.gif" width="50%"/></a>
+
