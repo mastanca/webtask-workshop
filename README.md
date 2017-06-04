@@ -566,7 +566,7 @@ Now that your breakpoint is set, you can test it out.
 
 Run the previous `curl` command that you ran before:
 
-```bash
+```
 curl localhost:8080 -H "content-type: application/json" -d '{ 
     "action":"opened", 
     "repository":{ 
