@@ -269,7 +269,7 @@ A very common use case for Webtask is to be a bridge between another service. Fo
 
 In order to send to Slack though, you will need to provide an SLACK URL. This URL is a secret, similar to an API key that would use to talk to a service like Twilio, or it may be connection string information to connect to a Database. Generally you don't want this kind of information sitting in the code. For one thing it is a security risk to have keys loosely exposed in text. Another is it makes the code hard to reuse and test.
 
-Webtask lets you store this kind of information separately from the code in a secure manner using `Secrets`. Each Webtask can have one or more secrets with are then accessible off of the `secrets` param of the context object. Secrets are useful for more than just secure keys and connection strings, you can use them for general configuration as well.
+Webtask lets you store this kind of information separately from the code in a secure manner using [Secrets](https://webtask.io/docs/editor/secrets). Each Webtask can have one or more secrets with are then accessible off of the `secrets` param of the context object. Secrets are useful for more than just secure keys and connection strings, you can use them for general configuration as well.
 
 You'll now see how you can use secrets to connecting your Webtask to Slack. Before you move forward the first thing you need is an incoming Slack URL. If one is not provided to you, you can create one in any Slack group that you are an admin following these [instructions](https://my.slack.com/services/new/incoming-webhook/]. Once you have the URL, copy it to the clipboard.
 
@@ -314,3 +314,85 @@ Here is what this code is doing:
 Now go create an issue in your repo. As soon as you do, you should see a Slack message similar to the following.
 
 <img src="https://cloud.githubusercontent.com/assets/141124/26757499/fc58ed9c-4871-11e7-8261-ef83e2809c90.png" width="50%"/>
+
+As you can see `Secrets` are really easy to use, and they keep your code more secure and easier to maintain. 
+
+# Storage
+Sometimes Webtasks need to persist state. Webtask includes a built in [storage API](https://webtask.io/docs/storage) that you can use within your tasks. You can persist and retreive a single JSON object in the store that is <= 500KB in size. Storage also supports concurrency, to prevent loss of data. It's use is primarly to maintain lightweight and transient state. To access storage you use the `storage` object on the `context`. 
+
+For the slack example, you can imagine using storage to keep a counter of issues created for each repo. This is a good fit as the number of repos should be relatively small.
+
+You'll change the task to persist a counter for each repo, and you'll add logic to allow retrieving the stats.
+
+First you'll add the code, and then we'll review the new parts.
+
+```javascript
+module.exports = function(ctx, cb) {
+  var slack = require("slack-notify")(ctx.secrets.SLACK_URL);
+  var body = ctx.body;
+  var attempts;
+  
+  if (ctx.data.showstats === "true") {
+    return getStats();
+  }
+  else if (body.issue && body.action === "opened") {
+    console.log("issue created");
+    var issue = body.issue;
+
+    var text='*New Issue*\n\n' + 
+             `Repository: ${body.repository.full_name}\n` +
+             `Number: ${issue.number}\n` +
+             `Url: ${issue.url}\n` +
+             `Title: ${issue.title}\n\n` +
+             `${issue.body}`;
+             
+    slack.send({text:text, username: "webtask-bot", icon_emoji: ":robot_face:"}); 
+    incrementCounter();
+  }
+
+  function incrementCounter() {
+    ctx.storage.get(function(error, data){
+      if (data === undefined) {
+        data={};
+      }
+      var repoName = body.repository.full_name
+      data[repoName] === undefined ? data[repoName] = 1 : data[repoName]++;
+      attempts = 3 ;
+      ctx.storage.set(data, function(error) {
+        setStorage(error, data);
+      });
+    });
+  }
+  
+  function setStorage(error,data) {
+    if(error) {
+      if (error.code == 409 && attempts--) {
+        data.counter = Math.max(data.counter, error.conflict.counter) + 1;
+        return ctx.storage.set(data, setStorage);
+      }
+      else {
+        return cb(error);
+      }
+    }
+    cb(null, data);
+  }
+  
+  function getStats() {
+    ctx.storage.get(function(error,data){
+      cb(null, data); 
+    });
+  }
+}; 
+```
+
+Now to what the new code does:
+
+* When the request is received, if the query string value of "getstats" is true, then any collected stats will be returned. The `get` function of Storage retrieves the persisted data object. If data has not previously been set then it will return undefined.
+* After the Slack event is created:
+ * The `get` function will be used to retrieve the data.
+ * If no data was stored, then data will be initialized as an empty JSON object.
+ * On the data object, the value for the repo name key will be incremented by 1. If it was previously undefined, then it will be initialized to 1.
+ * The data object will be persisted using the `set` function on Storage.
+ * If there is a conflict (meaning another instance of the task updated storage AFTER this instance read the data), then it will resolve the conflict by choosing the greatest number between the current value and the conflicting value. It will then add 1 and try again.
+ * After 3 total attempts it will return an error.
+
