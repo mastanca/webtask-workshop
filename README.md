@@ -540,6 +540,24 @@ curl localhost:8080 -H "content-type: application/json" -d '{
 }'
 ```
 
-Check the first terminal, you should see the message `issue created`. Also if you check your slack channel, you see the dummy issue was in fact created.
+Check the first terminal, you should see the message `issue created`. Also if you check your slack channel, you'll see the dummy issue was in fact created!
 
 <img src="https://cloud.githubusercontent.com/assets/141124/26760014/1b8f655a-48c3-11e7-9976-3bf5dd985796.png" width="50%"/>
+
+## Debugging
+In the past section, you saw how you can locally serve your task, providing secrets, storage and 3rd party modules. Wouldn't it be great if you could step through debug? It turns out you can, even using breakpoints and watches. You'll see how now!
+
+In addition to the `wt serve` command, there is a `wt debug` command. There are 2 ways you can debug.
+
+### Devtool
+There's a convenient stand alone Electron-based debugger called Devtool, which you can install right from npm. Let's see how you can use it to debug the task. First install Devtool from npm: `npm install -g devtool`. 
+
+Once devtool is installed you can launch `wt-cli` telling it to use it to debug. Here is the command to debug our task.
+
+```bash
+wt debug -d=devtool --parse-body wt1.js --secrets-file secrets --storage-file storage
+```
+
+Devtool will popup. Once it opens, you can drill down into the file explorer on the left to find your task. Then double click on it and you can add a breakpoint as is shown below.
+
+<img src="https://cloud.githubusercontent.com/assets/141124/26760129/f7145520-48c5-11e7-8e19-0928df592264.gif"/>
