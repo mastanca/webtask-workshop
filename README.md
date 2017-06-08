@@ -10,7 +10,7 @@ Webtask is a platform for easily creating a serverless HTTP Endpoint / Webhook. 
 * Rich browser based editing experience
 * Middleware 
 * Multi-tenant
-* Extremely low latency
+
 
 ## How does it differ from other Serverless offerings.
 
@@ -18,6 +18,7 @@ Webtask is a platform for easily creating a serverless HTTP Endpoint / Webhook. 
 * Specialized for Node.js
 * Low configuration
 * Highly customizable
+* Extremely low latency
 
 ## Hello Webtask
 
