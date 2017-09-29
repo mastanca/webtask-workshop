@@ -1,6 +1,6 @@
-<img src="images/symbol.svg" /><img src="images/logotype.svg" height="150px" />
+<img src="images/symbol.svg" />  <img src="images/logotype.svg" height="150px" />
 
-# Auth0 Webtask Workshop
+---
 
 Webtask is a platform for easily creating a serverless HTTP Endpoint / Webhook. Webtask executes node.js code in a secure and safe manner. There's no servers to deploy, no tools you have to install, just code. 
 
