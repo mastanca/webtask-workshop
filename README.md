@@ -43,5 +43,3 @@ This workshop assumes you have the following ready to go:
 1. [NPM Modules](modules/npm-modules.md)
 1. [Secrets](modules/secrets.md)
 1. [Storage](modules/storage.md)
-1. [Local Execution](modules/local-execution.md)
-1. [Local Debugging](modules/local-debugging.md)
