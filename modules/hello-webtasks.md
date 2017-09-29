@@ -25,7 +25,7 @@ Once you do you'll be taken right to the Webtask editor with a starter Webtask.
 
 This Webtask outputs a JSON object with a `hello` property and a value of either Anonymous or the `name` query string value.
 
-Notice the two params of the function. `context` is the Webtask Context object. We'll come back to this later. The second param is `cb` which is the callback. The callback accepts two params `error` and `body` and **must** be called when the task completes execution, in order to return some data and a resposne code.
+Notice the two params of the function. `context` is the Webtask Context object. We'll come back to this later. The second param is `cb` which is the callback. The callback accepts two params `error` and `body` and **must** be called when the task completes execution, in order to return some data and a response code.
 
 ## Run the Webtask
 
