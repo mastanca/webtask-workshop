@@ -1,12 +1,12 @@
-<img src="images/symbol.svg" />  <img src="images/logotype.svg" height="150px" />
+<img src="images/webtasks.svg" width="900px" />
 
 ---
 
-Webtask is a platform for easily creating a serverless HTTP Endpoint / Webhook. Webtask executes node.js code in a secure and safe manner. There's no servers to deploy, no tools you have to install, just code. 
+Auth0 Webtasks is a platform for easily creating a serverless HTTP Endpoint / Webhook. Auth0 Webtasks executes node.js code in a secure and safe manner. There's no servers to deploy, no tools you have to install, just code. 
 
-* Every Webtask is an HTTP endpoint
+* Every webtask is an HTTP endpoint
 * Simple Node.js programming model
-* High fidelity of HTTP, Webtasks can even return HTML
+* High fidelity of HTTP, webtasks can even return HTML
 * Full access to node modules available on npmjs.com
 * Rich browser based editing experience
 * Middleware 
@@ -48,7 +48,7 @@ Using [hads](https://github.com/sinedied/hads) allows you to navigate around the
 
 ## Workshop Modules
 
-1. [Hello Webtasks](modules/hello-webtasks.md)
+1. [Hello Editor](modules/hello-editor.md)
 1. [Hello CLI](modules/hello-cli.md)
 1. [Programming Models](modules/programming-models.md)
 1. [NPM Modules](modules/npm-modules.md)

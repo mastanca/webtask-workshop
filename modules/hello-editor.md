@@ -1,6 +1,6 @@
-# Hello Webtask
+# Hello Editor
 
-Let's jump in and create your first Webtask. 
+Let's jump in and create your first webtask. 
 
 ## Authenticate
 
@@ -10,7 +10,7 @@ Let's jump in and create your first Webtask.
 
 ![wt editor login](../images/wt-editor-login.png)
 
-After you have logged in, you'll be taken to the **Webtask Editor**.
+After you have logged in, you'll be taken to the **Auth0 Webtask Editor**.
 
 ## Create a Webtask
 
@@ -19,13 +19,13 @@ After you have logged in, you'll be taken to the **Webtask Editor**.
 - Enter `wt1` for the webtask name.
 - Click `Save`. 
 
-Once you do you'll be taken right to the Webtask editor with a starter Webtask.
+Once you do you'll be taken right to the editor with a starter webtask.
 
 ![Create new](../images/wt-editor-create-new.gif)
 
-This Webtask outputs a JSON object with a `hello` property and a value of either Anonymous or the `name` query string value.
+This webtask outputs a JSON object with a `hello` property and a value of either Anonymous or the `name` query string value.
 
-Notice the two params of the function. `context` is the Webtask Context object. We'll come back to this later. The second param is `cb` which is the callback. The callback accepts two params `error` and `body` and **must** be called when the task completes execution, in order to return some data and a response code.
+Notice the two params of the function. `context` is the webtask Context object. We'll come back to this later. The second param is `cb` which is the callback. The callback accepts two params `error` and `body` and **must** be called when the task completes execution, in order to return some data and a response code.
 
 ## Run the Webtask
 
@@ -34,7 +34,7 @@ Notice the two params of the function. `context` is the Webtask Context object. 
  
 ![Run](../images/wt-editor-run.gif)
 
-You'll see you Webtask is instantly executed and the message `{"hello":"Anonymous"}` is returned in the Runner window.
+You'll see you webtask is instantly executed and the message `{"hello":"Anonymous"}` is returned in the Runner window.
 
  - Click on the Gear icon in the upper right of the runner.
  - Click on URL Params(0) and you will get an area to enter query string key/value pairs. 
@@ -77,7 +77,7 @@ module.exports = function(context, cb) {
 
 ## Calling a Webtask from the Browser
 
-Each Webtask you create is automatically an HTTP endpoint. There's no special configuration, as soon as you create it, it is available over HTTP.
+Each Auth0 Webtasks you create is automatically an HTTP endpoint. There's no special configuration, as soon as you create it, it is available over HTTP.
 
 Let's try this out. 
 
@@ -89,7 +89,7 @@ If you look in the editor footer, you'll see a url with a copy/paste button.
 
 ![Write logs](../images/wt-browser-run.gif)
 
-You'll see your Webtask return the anonymous result.
+You'll see your webtask return the anonymous result.
 
 ```javascript
 {
@@ -114,7 +114,7 @@ You'll see as before that your name is returned.
 
 That URL can now easily be plugged in as a Webhook. You can try that out using one of our favorite Webhook based services, [Github](https://github.com).
 
-- Modify the code of your Webtask and change the `console.log` statement to write `Webhook Invoked`.
+- Modify the code of your webtask and change the `console.log` statement to write `Webhook Invoked`.
 - Click on the `save` button.
 
 Your code should look like this:
@@ -131,7 +131,7 @@ module.exports = function(ctx, cb) {
 - Go to the `settings` page.
 - Click `Webhooks`.
 - Click the `Add wehook` button.
-- For the payload URL, paste the URL of your Webtask.
+- For the payload URL, paste the URL of your webtask.
 - For Content type, select `application/json`.
 - For events, select `Send me everything`.
 - Leave all other values as defaults.
@@ -139,7 +139,7 @@ module.exports = function(ctx, cb) {
 
 ![Add webhook](../images/github-add-webhook.gif)
 
-As soon as the Webhook is created, it will get invoked. Go check the log viewer for your Webtask and you should see the "Webhook Invoked" message in the console.
+As soon as the Webhook is created, it will get invoked. Go check the log viewer for your webtask and you should see the "Webhook Invoked" message in the console.
 
 ![Add webhook](../images/wt-editor-logs-webhook.png)
 
@@ -169,6 +169,6 @@ To open the task you created before, use this url: [https://webtask.io/edit/wt1]
 
 ## Summary
 
-You've just seen the basics of using the Webtask editor to create your first Webtask. You've then seen how to invoke the Webtask from the runner, in the browser, and then as a Github Webhook. Wasn't that easy? This is just scratching the surface. 
+You've just seen the basics of using the Auth0 Webtask Editor to create your first webtask. You've then seen how to invoke the webtask from the runner, in the browser, and then as a Github webhook. Wasn't that easy? This is just scratching the surface. 
 
 Now you'll learn how to use the [CLI](hello-cli.md).

@@ -1,8 +1,8 @@
 
 
-# Hello Webtask CLI
+# Hello Auth0 Webtasks CLI
 
-In the first section you authored a Webtask via the browser. Webtask also offers wt-cli to create, edit, and manage your webtasks from the command line. One advantage of the CLI is you can create tasks using your favorite text editor / IDE and then upload them. The CLI also allows you to run tasks locally and even debug them! 
+In the first section you authored a webtask via the browser. Auth0 Webtasks also offers wt-cli to create, edit, and manage your webtasks from the command line. One advantage of the CLI is you can create tasks using your favorite text editor / IDE and then upload them. The CLI also allows you to run tasks locally and even debug them! 
 
 ## Installing the CLI
 
@@ -12,14 +12,14 @@ Head over to [https//webtask.io/cli](https://webtask.io/cli) and follow the inst
 
 The CLI will let you do a number of things. Here are the most common commands:
 
-- `wt ls` - List Webtasks.
-- `wt create wt1.js` - Creates a new webtask based on an existing file. The prefix for the file is used as the Webtask name by default. 
-- `wt edit wt1` - Edits an existing Webtask in the Webtask editor. If no args are passed, then it will create a new Webtask in the editor. 
-- `wt mv wt1 wt2` - Renames a Webtask. 
+- `wt ls` - List webtasks.
+- `wt create wt1.js` - Creates a new webtask based on an existing file. The prefix for the file is used as the webtask name by default. 
+- `wt edit wt1` - Edits an existing webtask in the Editor. If no args are passed, then it will create a new webtask in the editor. 
+- `wt mv wt1 wt2` - Renames a webtask. 
 - `wt logs` - View realtime logs.
-- `wt serve wt1.js` - Runs a Webtask locally.
-- `wt debug wt1.js` - Debugs a Webtask locally.
-- `wt profile` - Manage Webtask profiles
+- `wt serve wt1.js` - Runs a webtask locally.
+- `wt debug wt1.js` - Debugs a webtask locally.
+- `wt profile` - Manage Auth0 Webtask profiles
 
 ### Using the CLI
 Now you'll do some basic things with the cli.
@@ -42,7 +42,7 @@ Let's edit the first one.
 wt edit wt1
 ```
 
-This should open up the editor to view your Webtask.
+This should open up the editor to view your webtask.
 
 ![wt edit](../images/wt-cli-edit.gif)
 
@@ -110,6 +110,6 @@ When you do you will see the realtime logs are displayed.
 ## Summary
 
 
-You've just installed the Webtask CLI seen the basics of using it to create your second and third Webtask. You've then seen how to list all of your webtask in the console, bring up the web editor to edit a task, serve a task locally, create a new webtask from the console and monitor logs realtime. Wasn't that awesome? We are just getting started. 
+You've just installed the Auth0 Webtasks CLI seen the basics of using it to create your second and third webtask. You've then seen how to list all of your webtask in the console, bring up the web editor to edit a task, serve a task locally, create a new webtask from the console and monitor logs realtime. Wasn't that awesome? We are just getting started. 
 
 Next you'll learn about the default [programming models](programming-models.md).

@@ -1,12 +1,12 @@
 # Secrets
 
-A very common use case for Webtask is to be a bridge between another service. For example, you might want to send a notification to a Slack channel whenever an issue is filed in a Github repo. Using Webtask provides a real easy way to handle this kind of logic. 
+A very common use case for Auth0 Webtasks is to be a bridge between another service. For example, you might want to send a notification to a Slack channel whenever an issue is filed in a Github repo. Using Auth0 Webtasks provides a real easy way to handle this kind of logic. 
 
 In order to send to Slack though, you will need to provide an SLACK URL. This URL is a secret, similar to an API key that would use to talk to a service like Twilio, or it may be connection string information to connect to a Database. Generally you don't want this kind of information sitting in the code. For one thing it is a security risk to have keys loosely exposed in text. Another is it makes the code hard to reuse and test.
 
-Webtask lets you store this kind of information separately from the code in a secure manner using [Secrets](https://webtask.io/docs/editor/secrets). Each Webtask can have one or more secrets with are then accessible off of the `secrets` param of the context object. Secrets are useful for more than just secure keys and connection strings, you can use them for general configuration as well.
+Auth0 Webtasks lets you store this kind of information separately from the code in a secure manner using [Secrets](https://webtask.io/docs/editor/secrets). Each webtask can have one or more secrets with are then accessible off of the `secrets` param of the context object. Secrets are useful for more than just secure keys and connection strings, you can use them for general configuration as well.
 
-You'll now see how you can use secrets to connecting your Webtask to Slack. Before you move forward the first thing you need is an incoming Slack URL. 
+You'll now see how you can use secrets to connecting your webtask to Slack. Before you move forward the first thing you need is an incoming Slack URL. 
 
 - Naviate to [Incoming Webhooks](https://my.slack.com/services/new/incoming-webhook/) on Slack
 - Select #general from the Post to Channel drop down
@@ -75,7 +75,7 @@ Way back in the first module, You created a webhook on github to call our wt1 en
 - Go to the `settings` page.
 - Click `Webhooks`.
 - Click the `Edit` button next to the previous webhook.
-- For the payload URL, paste the URL of the new Webtask.
+- For the payload URL, paste the URL of the new webtask.
 - Click `Update webhook` button.
 
 ![Update webhook url](../images/github-update-webhook.gif) 
@@ -163,6 +163,6 @@ As you can see `Secrets` are really easy to use, and they keep your code more se
 
 ## Summary
 
-You have just learned how to securely store sensitive information in the cloud using Webtask Secrets. They can be stored using the editor or passed along via the CLI when creating new webtasks.
+You have just learned how to securely store sensitive information in the cloud using Secrets. They can be stored using the editor or passed along via the CLI when creating new webtasks.
 
 Next up you will learn how to use webtask [Storage](storage.md).

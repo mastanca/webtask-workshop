@@ -1,6 +1,6 @@
 # NPM Modules
 
-When you need to go beyond the built in node.js functionality, Webtask has an answer, npm modules. It offers ways to get access to node modules via editor or cli so you can enrich the capabilities of your Webtasks.
+When you need to go beyond the built in node.js functionality, Auth0 Webtasks has an answer, npm modules. It offers ways to get access to node modules via editor or cli so you can enrich the capabilities of your webtasks.
 
 ## Node Modules in the Editor
 
@@ -47,7 +47,7 @@ This code uses the [request.js](https://github.com/request/request) module to ge
 
 ![Create requst task](../images/wt-editor-add-module.gif)
 
-Once saved, Webtask will pull the module from NPM and make it available to your webtask for execution.
+Once saved, webtask will pull the module from NPM and make it available to your webtask for execution.
 
 - Click on the `play` button to bring up the runner.
 - Click `Run`.
@@ -156,7 +156,7 @@ This will create a package.json that looks like this:
 ![Update with package.json via cli](../images/wt-cli-update-package-json.gif)
 
 
-Notice that the wt-cli automatically ensures the modules defined in the `package.json` are installed. Webtask keeps several caches of a module and all its dependencies, thus after the initial install all subsequent installs will be dramatically faster.
+Notice that the wt-cli automatically ensures the modules defined in the `package.json` are installed. Auth0 Webtasks keeps several caches of a module and all its dependencies, thus after the initial install all subsequent installs will be dramatically faster.
 
 From a `require` standpoint, you do not specify any version when you require, if the module was specific via package.json.
 
@@ -164,7 +164,7 @@ If the module installation fails, then an error will be reported.
 
 ## Handling of ranges and freezing dependencies
 
-If you are famliar with `package.json`, then you know it supports ranges for dependencies. Webtask will honor these ranges, but it will freeze the dependencies at the time of install. Thus subsequent updates to the task will not cause new versions of the modules to be installed. If however you modify the package.json, then new versions will get installed.
+If you are famliar with `package.json`, then you know it supports ranges for dependencies. Auth0 Webtasks will honor these ranges, but it will freeze the dependencies at the time of install. Thus subsequent updates to the task will not cause new versions of the modules to be installed. If however you modify the package.json, then new versions will get installed.
 
 
 ## Summary

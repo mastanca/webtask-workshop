@@ -29,7 +29,7 @@ In this case, we have been accessing query string values via the context's data 
 
 The callback object on webtask allows you to return a body, whether it be a string or a JSON payload. This is useful for many scenarios, but sometimes you want to go further. You may need to access or set headers such as content-type or cache headers, or check for an API key. 
 
-Each Webtask is an HTTP endpoint, and you can access the raw Node.js request and response objects. 
+Each webtask is an HTTP endpoint, and you can access the raw Node.js request and response objects. 
 
 To do this, you use a different function signature for your task. 
 
@@ -68,12 +68,12 @@ module.exports = function (context, req, res) {
 
 **Note:** Notice there is no callback object. As you have access to the raw response, you can call res.end, to end the response. 
 
-- Copy the Webtask URL to the clipboard as you did earlier.
+- Copy the webtask URL to the clipboard as you did earlier.
 - Now paste that into your browser.
 
 ![Browser run](../images/wt-browser-run.png)
 
-As you can see, you now have a Webtask that returns an HTML page.
+As you can see, you now have a webtask that returns an HTML page.
 
 ## Summary
 
