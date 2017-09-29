@@ -1,5 +1,4 @@
-<img src="images/symbol.svg" />
-<img src="images/logotype.svg" height="150px" />
+<img src="images/symbol.svg" /><img src="images/logotype.svg" height="150px" />
 
 # Auth0 Webtask Workshop
 
