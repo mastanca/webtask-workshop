@@ -1,6 +1,8 @@
+<img src="images/symbol.svg" />
+<img src="images/logotype.svg" height="150px" />
+
 # Auth0 Webtask Workshop
 
-## Webtask
 Webtask is a platform for easily creating a serverless HTTP Endpoint / Webhook. Webtask executes node.js code in a secure and safe manner. There's no servers to deploy, no tools you have to install, just code. 
 
 * Every Webtask is an HTTP endpoint
@@ -12,7 +14,7 @@ Webtask is a platform for easily creating a serverless HTTP Endpoint / Webhook. 
 * Multi-tenant
 
 
-## How does it differ from other Serverless offerings.
+## How does it differ from other Serverless offerings?
 
 * Specialized for Node.js
 * Low configuration
@@ -23,9 +25,15 @@ Webtask is a platform for easily creating a serverless HTTP Endpoint / Webhook. 
 ## Prerequisites
 
 This workshop assumes you have the following ready to go:
- 
-- A Github account
-- Node.js installed (v6 is perfered, some features currently unstable in v8)
+
+- Familiarity with modern JavaScript 
+- A [Github](https://github.com/) account with a public repository
+  - Feel free to create a new repository just for this workshop 
+- A [Slack](https://slack.com/) account with administrative privileges
+  - Feel free to create a new one just for this workshop 
+- [Node.js](https://nodejs.org/en/) installed (v6 is perfered, some features currently unstable in v8)
+- A Text Editor
+  - This workshop shows use of [Visual Studio Code](https://code.visualstudio.com/)
 
 ## Getting Started
 
@@ -33,7 +41,11 @@ This workshop assumes you have the following ready to go:
 - Clone your forked repository.
 - `npm install -g hads`
 - `hads . -o`
-- Feel free to edit and send pull requests to update, add more modules.
+
+Using [hads](https://github.com/sinedied/hads) allows you to navigate around the workshop content, edit it to add your own notes and offers a easy search bar to go back and look something up. 
+
+**Note:** Feel free to edit and send pull requests to update/add more modules.
+
 
 ## Workshop Modules
 
