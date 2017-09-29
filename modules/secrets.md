@@ -67,7 +67,7 @@ Here is what this code is doing:
 * If it is a new issue, creating a tailored Slack Message to send to the channel.
 * Sending the message.
 
-Way back in the first module, created a webhook on github to call our wt1 endpoint. Let's update that webhook to point to this new webtask.
+Way back in the first module, You created a webhook on github to call our wt1 endpoint. Let's update that webhook to point to this new webtask.
 
 - Copy the Wetask Url.
 - Open [Github](https://github.com).
