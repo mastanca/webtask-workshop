@@ -48,9 +48,9 @@ Using [hads](https://github.com/sinedied/hads) allows you to navigate around the
 
 ## Workshop Modules
 
-1. [Hello Editor](modules/hello-editor.md)
-1. [Hello CLI](modules/hello-cli.md)
-1. [Programming Models](modules/programming-models.md)
-1. [NPM Modules](modules/npm-modules.md)
-1. [Secrets](modules/secrets.md)
+1. [Hello Editor](modules/hello-editor.md) - 20 Minutes
+1. [Hello CLI](modules/hello-cli.md) - 15 Minutes
+1. [Programming Models](modules/programming-models.md) - 5 Minutes
+1. [NPM Modules](modules/npm-modules.md) - 15 Minutes
+1. [Secrets](modules/secrets.md) - 20 Minutes
 1. [Storage](modules/storage.md)
