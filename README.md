@@ -26,10 +26,10 @@ Auth0 Webtasks is a platform for easily creating a serverless HTTP Endpoint / We
 This workshop assumes you have the following ready to go:
 
 - Familiarity with modern JavaScript 
-- A [Github](https://github.com/) account with a public repository
-  - Feel free to create a new repository just for this workshop 
+- A [Github](https://github.com/) account
 - A [Slack](https://slack.com/) account with administrative privileges
   - Feel free to create a new one just for this workshop 
+  - If attending a workshop where there is a leader, one will be provided
 - [Node.js](https://nodejs.org/en/) installed (v6 is perfered, some features currently unstable in v8)
 - A Text Editor
   - This workshop shows use of [Visual Studio Code](https://code.visualstudio.com/)
