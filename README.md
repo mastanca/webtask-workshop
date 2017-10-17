@@ -30,7 +30,7 @@ This workshop assumes you have the following ready to go:
 - A [Slack](https://slack.com/) account with administrative privileges
   - Feel free to create a new one just for this workshop 
   - If attending a workshop where there is a leader, one will be provided
-- [Node.js](https://nodejs.org/en/) installed (v6 is perfered, some features currently unstable in v8)
+- [Node.js](https://nodejs.org/en/) installed
 - A Text Editor
   - This workshop shows use of [Visual Studio Code](https://code.visualstudio.com/)
 
