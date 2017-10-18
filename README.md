@@ -53,6 +53,6 @@ Using [hads](https://github.com/sinedied/hads) allows you to navigate around the
 1. [NPM Modules](modules/npm-modules.md) - 15 Minutes
 1. [Secrets](modules/secrets.md) - 20 Minutes
 1. [Storage](modules/storage.md) - 20 Minutes
+1. [Programming Models](modules/programming-models.md) - 5 Minutes
 1. [Local Execution](modules/local-execution.md)
 1. [Local Debugging](modules/local-debugging.md)
-1. [Programming Models](modules/programming-models.md) - 5 Minutes
