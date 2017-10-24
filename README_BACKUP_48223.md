@@ -9,8 +9,9 @@ Auth0 Webtasks is a platform for easily creating a serverless HTTP Endpoint / We
 * High fidelity of HTTP, webtasks can even return HTML
 * Full access to node modules available on npmjs.com
 * Rich browser based editing experience
-* Middleware
+* Middleware 
 * Multi-tenant
+
 
 ## How does it differ from other Serverless offerings?
 
@@ -47,14 +48,15 @@ This workshop assumes you have the following ready to go:
 1. Custom Programming Models
 1. Extend
 
---
+
+----
 
 ### Contributing to this workshop
 
 - Fork the repository.
 - Clone your forked repository.
 
----
+-----
 __OPTIONAL__ A tip for those who do *not* have an in-IDE-markdown-viewer. 
 Using [hads](https://github.com/sinedied/hads) allows you to navigate around the
 workshop content, edit it to add your own notes and offers a easy search bar to
@@ -64,6 +66,22 @@ this step*.
 - `npm install -g hads`
 - `hads . -o` Display project documentation in browser at url http://localhost:4040
 
----
+-----
 
+<<<<<<< HEAD
+## Workshop Modules
+
+1. [Hello Editor](modules/hello-editor.md) - 20 Minutes
+1. [Hello CLI](modules/hello-cli.md) - 15 Minutes
+1. [NPM Modules](modules/npm-modules.md) - 15 Minutes
+1. [Secrets](modules/secrets.md) - 20 Minutes
+1. [Storage](modules/storage.md) - 20 Minutes
+1. [Programming Models](modules/programming-models.md) - 5 Minutes
+1. [Local Execution](modules/local-execution.md)
+1. [Local Debugging](modules/local-debugging.md)
+1. Middleware
+1. Custom Programming Models
+1. Extend
+=======
 **Note:** Feel free to edit and send pull requests to update/add more modules.
+>>>>>>> 8b4ff41cb010992e9c2b8871a91e54f335a288b9
