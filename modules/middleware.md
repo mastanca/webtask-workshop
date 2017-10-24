@@ -1,14 +1,14 @@
 # Middleware
 
-We currently have a webtask that will consume a GitHub issue object and format message to post into Slack. As we saw using curl, as long as we know the URL of the webtask we can send a correctly formatted issue and have messages show up in Slack. That is fine for development locally, but we probably don't want an open HTTP endpoint on the internet capable of sending anonymous messages to our Slack!
+We currently have a webtask that consumes a GitHub issue and formats a message to post into Slack. As we saw using curl, as long as we know the URL of the webtask we can send a correctly formatted issue and have messages show up in Slack. That is fine for development locally, but we probably don’t want an open HTTP endpoint on the internet capable of sending anonymous messages to our Slack!
 
-Middleware is custom Node.js code you control that executes right before your webtask code does. It allows you to augment the default webtask execution logic without requiring any changes in the code of your webtask. It is a nice way to share logic among many webtasks that will not clutter up the code of your webtask itself.
+Middleware is Node.js code you control that executes right before your webtask code does. It allows you to augment the default webtask execution logic without requiring any changes in the code of your webtask.
 
-In this module we will start by securing the webtask using simple bearer token authorization, then we will modify it to use an HMAC Digest singed token authorization all using the exact same webtask code.
+In this module, we will secure the webtask using simple bearer token authorization, then modify it to use an HMAC Digest singed token authorization all using the same webtask code.
 
 ## Bearer Auth Middleware
 
-Securing webtasks with a bearer authentication token is such a common process, that the webtask team publishes a npm package that will do it for us. Let's secure our webtask so that only requests with valid tokens are allowed to use it.
+Securing webtasks with a bearer authentication token is such a typical process, that the webtask team publishes an NPM package that handles it. Let's secure our webtask so that only requests with valid tokens are allowed to use it.
 
 - Open the `.secrets` file.
 - Add a new line with the value `wt-auth-secret=mysecretkeytoken`.
@@ -30,7 +30,7 @@ curl -X POST $(wt inspect wt7 --output json | jq .webtask_url -r) \
   -d '{}'
 ```
 
-You should see a **401** response retured rejecting the request.
+You should see a **401** response returned rejecting the request.
 
 ```json
 {
@@ -39,7 +39,7 @@ You should see a **401** response retured rejecting the request.
 }
 ```
 
-Now let's run the command again supplying the authorization header.
+Now let's rerun the command supplying the authorization header.
 
 - Execute the following `curl` command.
 
@@ -61,7 +61,7 @@ curl -X POST $(wt inspect wt7 --output json | jq .webtask_url -r) \
 }'
 ```
 
-This is a fairly easy to implement form of authorization and it good for many use cases.
+Shared key authorization is a reasonably easy to implement authorization method, and it is suitable for many use cases.
 
 ## Secure Github Webhook Middleware
 
@@ -100,4 +100,4 @@ Finally, add a new issue to your repository and see GitHub securely send a messa
 
 ## Summary
 
-In this module, you have learned how to implement use middleware to change the behavior of your webtask without effecting the source of your tasks. This is a useful way to share cross cutting concerns among many webtasks.
+In this module, you have learned how to implement use middleware to change the behavior of your webtask without affecting the source of your tasks. Middleware is a useful way to share cross-cutting concerns among many webtasks.

@@ -1,6 +1,6 @@
 # Local Execution
 
-Back in the [Hello CLI](hello-cli.md) module, we briefly mentioned that you can run webtasks locally using `wt serve`. That example was very simple, but it did not rely on 3rd party modules, secrets, or on accessing the storage APIs. In addition to running a task locally, you can also specify secrets and storage using JSON files. You'll see how in this section.
+Back in the [Hello CLI](hello-cli.md) module, we briefly mentioned that you could run webtasks locally using `wt serve`. That example was straightforward, but it did not rely on 3rd party modules, secrets, or on accessing the storage APIs. In addition to running a task locally, you can also specify secrets and storage using files. You will see how in this section.
 
 ## Fetch a Local Copy of WT6
 
@@ -14,7 +14,7 @@ Let's start by getting a local copy of **wt6** so you can run it locally.
 
 ## Local Secrets
 
-To set secrets, you can provide a secrets file where each secret is a key/value pair.
+To set secrets, you provide a secrets file where each secret is a key/value pair.
 
 - Execute the command `touch .secrets`.
 - Open it in your favorite text editor.
@@ -25,18 +25,18 @@ To set secrets, you can provide a secrets file where each secret is a key/value 
 SLACK_URL={slack_url}
 ```
 
-**Note:** Replace the entire token on the right hand side including curly braces.
+**Note:** Replace the entire token on the right-hand side including curly braces.
 
 
 ## Local Storage
 
-For storage you can provide a text file which will act as the store. You can also pre-populate the text file if you want to provide test data in the store.
+For storage, you provide a text file which acts as the store. You can also pre-populate the file if you want to provide test data in the store.
 
 - Execute the command `touch .storage`.
 
 ## Execute with Secrets & Storage
 
-To serve, you'll additionally specify the secrets and storage file at the command line. Also you'll need to pass `--parse-body` to force the body to be parsed.
+To serve, you additionally specify the secrets and storage file at the command line. Also, you need to pass `--parse-body` to force the body to be parsed.
 
 - Execute the following command.
 
@@ -64,10 +64,10 @@ curl localhost:8080 -H "content-type: application/json" -d '{
 }'
 ```
 
-Check the first terminal, you should see the message "issue created". Also if you check your slack channel, you'll see the dummy issue was in fact created!
+Check the first terminal; you should see the message "issue created." Also if you check your slack channel, the dummy issue was in fact created!
 
 ## Summary
 
-You have just learned how to execute your webtask locally using both **secrets** and **storage**. This is helpful to reduce the feedback cycle while developing. You can work locally and iterate quickly, then publish your webtask when it is done.
+You have just learned how to execute your webtask locally using both **secrets** and **storage**. Local execution is helpful to reduce the feedback cycle while developing. You can work locally and iterate quickly, then publish your webtask when done.
 
 Next, you will learn about a couple different methods for [Local Debugging](local-debugging.md).
