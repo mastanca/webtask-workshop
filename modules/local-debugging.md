@@ -2,11 +2,11 @@
 
 In previous modules, you saw how you can locally serve your task, providing secrets, storage and 3rd party modules. Wouldn't it be great if you could step through debug? It turns out you can, even using breakpoints and watches. You'll see how now!
 
-In addition to the `wt serve` command, there is a `wt debug` command. I'll show you two ways you can debug your webtasks.
+In addition to the `wt serve` command, there is the `wt debug` command.
 
-## Using Devtool
+## Debugging with Devtool
 
-There's a convenient stand alone Electron-based debugger called Devtool, which you can install right from npm. Let's see how you can use it to debug the task. 
+The simplest and quickest way to debug is using the stand alone Electron-based debugger Devtool. Devtool is great because you can install it right from npm. Let's see how you can use it to debug the task. 
 
 - Execute the command, `npm install -g devtool`.
 - Execute the command below.
@@ -49,7 +49,7 @@ You'll see that the debugger will break on the breakpoint you set previously. Yo
 
 Go stop the task from being served and Devtool will automatically close. 
 
-## Using Visual Studio Code
+## Debugging with Visual Studio Code
 
 If you run `wt debug` without specifying `-d`, then wt-cli will launch standard node debugging allowing you to attach with an IDE like VS Code or Webstorm.
 

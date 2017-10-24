@@ -1,6 +1,6 @@
 # Local Execution
 
-Back in the [Hello CLI](hello-cli.md) module, I briefly mentioned that you can run webtasks locally using `wt serve`. That example was very simple, but it did not rely on 3rd party modules, secrets, or on accessing the storage APIs. In addition to running a task locally, you can also specify secrets and storage using JSON files. You'll see how in this section.
+Back in the [Hello CLI](hello-cli.md) module, we briefly mentioned that you can run webtasks locally using `wt serve`. That example was very simple, but it did not rely on 3rd party modules, secrets, or on accessing the storage APIs. In addition to running a task locally, you can also specify secrets and storage using JSON files. You'll see how in this section.
 
 ## Fetch a Local Copy of WT6
 
