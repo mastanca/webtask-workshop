@@ -30,8 +30,10 @@ This workshop assumes you have the following ready to go:
   - Feel free to create a new one just for this workshop 
   - If attending a workshop where there is a leader, one will be provided
 - [Node.js](https://nodejs.org/en/) installed
+- Some of the advanced examples use [jq](https://stedolan.github.io/jq/).
 - A Text Editor
   - This workshop shows use of [Visual Studio Code](https://code.visualstudio.com/)
+- These examples assume you are using bash.
 
 ## Workshop Modules
 
@@ -47,14 +49,11 @@ This workshop assumes you have the following ready to go:
 1. Custom Programming Models
 1. Extend
 
---
-
-### Contributing to this workshop
+## Contributing
 
 - Fork the repository.
 - Clone your forked repository.
 
----
 __OPTIONAL__ A tip for those who do *not* have an in-IDE-markdown-viewer. 
 Using [hads](https://github.com/sinedied/hads) allows you to navigate around the
 workshop content, edit it to add your own notes and offers a easy search bar to
@@ -63,7 +62,5 @@ this step*.
 
 - `npm install -g hads`
 - `hads . -o` Display project documentation in browser at url http://localhost:4040
-
----
 
 **Note:** Feel free to edit and send pull requests to update/add more modules.
