@@ -130,7 +130,7 @@ module.exports = function(ctx, cb) {
 - Create a new repository, or choose an existing one that you can modify.
 - Go to the `settings` page.
 - Click `Webhooks`.
-- Click the `Add wehook` button.
+- Click the `Add webhook` button.
 - For the payload URL, paste the URL of your webtask.
 - For Content type, select `application/json`.
 - For events, select `Send me everything`.
