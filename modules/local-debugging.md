@@ -67,10 +67,6 @@ wt debug --parse-body wt6.js --secrets-file .secrets --storage-file .storage
 - Select **Add Configuration** via the Drop Down.
 - Select **Node.js: Attach**.
 - Ensure your `launch.json` looks like the example below.
-- Save the `launch.json`.
-- In the Dropdown, select **Attach**
-- Press the **Play** button.
-
 
 ```json
 {
@@ -85,6 +81,9 @@ wt debug --parse-body wt6.js --secrets-file .secrets --storage-file .storage
     ]
 }
 ```
+- Save the `launch.json`.
+- In the Dropdown, select **Attach**
+- Press the **Play** button.
 
 Repeat the previous curl from the terminal. You should see your breakpoint hit, and you can debug!
 

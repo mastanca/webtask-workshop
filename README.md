@@ -2,7 +2,7 @@
 
 ---
 
-Auth0 Webtasks is a platform for easily creating a serverless HTTP Endpoint / Webhook. Auth0 Webtasks executes node.js code in a secure and safe manner. There's no servers to deploy, no tools you have to install, just code. 
+[Auth0 Webtasks](https://webtask.io) is a platform for easily creating a serverless HTTP Endpoint / Webhook. Auth0 Webtasks executes node.js code in a secure and safe manner. There's no servers to deploy, no tools you have to install, just code. 
 
 * Every webtask is an HTTP endpoint
 * Simple Node.js programming model
@@ -46,7 +46,7 @@ This workshop assumes you have the following ready to go:
 1. [Local Execution](modules/local-execution.md)
 1. [Local Debugging](modules/local-debugging.md)
 1. [Middleware](modules/middleware.md)
-1. Custom Programming Models
+1. [Custom Programming Models](modules/custom-programming-models.md)
 1. Extend
 
 ## Contributing
