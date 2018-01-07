@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "request": "^2.83.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "slack-notify": "^0.1.6"
   }
 }

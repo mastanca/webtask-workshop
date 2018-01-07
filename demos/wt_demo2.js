@@ -1,3 +1,5 @@
+// wt create enables dependencies automatically if package.json is found
+
 var request = require('request-promise');
 
 module.exports = function(ctx, cb) {
